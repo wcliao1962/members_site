@@ -16,6 +16,8 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $orders = auth()->user()->orders()->get();
+        dd($orders);
     }
 
     /**
@@ -48,6 +50,9 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        $buyer = $order->member()->first(); //使用first()與get()不一樣
+        //$buyer = $order->member;   //如果確定只有一個member
+        dd($buyer->name);
     }
 
     /**
