@@ -60,4 +60,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'member_id'); //FK必是指定是member_id，否則在此User當中FK會內定是user_id
+    }
 }
